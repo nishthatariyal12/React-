@@ -7,7 +7,18 @@
     "build": "parcel build src/index.html --public-url ./",
     "deploy": "gh-pages -d dist"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 3 safari version"
+    ]
+  },
   "homepage": "https://nishthatariyal12.github.io/React-",
   "author": "",
   "license": "ISC",
