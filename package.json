@@ -1,13 +1,15 @@
 {
   "name": "assesment",
   "version": "1.0.0",
-  "main": "index.js",
+    "main": "app.js",
+    "targets": {
+      "main": false
+    },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "deploy": "gh-pages -d dist" 
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html",
+    "deploy": "gh-pages -d dist"
   },
-  
   "homepage": "https://nishthatariyal12.github.io/React-",
   "author": "",
   "license": "ISC",
@@ -21,6 +23,8 @@
   },
   "description": "",
   "devDependencies": {
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.3"
   }
 }

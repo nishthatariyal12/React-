@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 
-import LandingPage from "./src/Routes/LandingPage";
-import ProfilePage from "./src/Routes/ProfilePage";
-import PostsPage from "./src/Routes/PostsPage";
-import ToDoPage from "./src/Routes/ToDoPage";
-import GalleryPage from "./src/Routes/GalleryPage";
+import LandingPage from "./Routes/LandingPage";
+import ProfilePage from "./Routes/ProfilePage";
+import PostsPage from "./Routes/PostsPage";
+import ToDoPage from "./Routes/ToDoPage";
+import GalleryPage from "./Routes/GalleryPage";
 const AppLayout = () => {
 
   return (
