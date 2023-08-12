@@ -1,12 +1,10 @@
 // Import necessary modules
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import useUserData from "../utils/useUserData";
 // Define the Navbar component
 const NavBar = () => {
-
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const [open, setOpen] = useState(false);
 
   // This function is called when the user clicks on their name in the navbar
@@ -16,7 +14,7 @@ const NavBar = () => {
 
   // Retrieve user data from localStorage
   const userdata = JSON.parse(localStorage.getItem("userData"));
-  const users=JSON.parse(localStorage.getItem("users"));
+  const users = JSON.parse(localStorage.getItem("users"));
 
   // This function is called when the user clicks the "Sign out" button
   const handleSignOut = () => {
@@ -25,15 +23,14 @@ const NavBar = () => {
     navigate("/");
   };
 
- 
   return (
     <nav className="bg-white text-gray-600 py-4 flex justify-between items-center">
       {/* Link to home page */}
       <Link to="#" className="text-xl font-semibold">
-        {location.pathname === `/profile/${userdata.id}` ? "Profile" : ""}
-        {location.pathname === `/profile/posts` ? "Posts" : ""}
-        {location.pathname === `/profile/gallery` ? "Gallery" : ""}
-        {location.pathname === `/profile/todo` ? "ToDo" : ""}
+        {location.pathname === `/user/${userdata.id}` ? "Profile" : ""}
+        {location.pathname === `/user/${userdata.id}/posts` ? "Posts" : ""}
+        {location.pathname === `/user/${userdata.id}/gallery` ? "Gallery" : ""}
+        {location.pathname === `/user/${userdata.id}/todo` ? "ToDo" : ""}
       </Link>
 
       <div className="flex items-center">
@@ -49,10 +46,7 @@ const NavBar = () => {
         {/* Display user name and dropdown menu on larger screens */}
         <div className="hidden md:block">
           <div className="relative">
-            <button
-              onClick={handleOpenNavbar}
-              className="flex items-center"
-            >
+            <button onClick={handleOpenNavbar} className="flex items-center">
               <span className="mr-2">{userdata.name}</span>
             </button>
 
@@ -75,14 +69,19 @@ const NavBar = () => {
                   <p className="text-medium font-normal text-gray-700 text-center">
                     {userdata.name}
                   </p>
-                  <p className="text-gray-400 text-center text-sm font-sm" >{userdata.email}</p>
+                  <p className="text-gray-400 text-center text-sm font-sm">
+                    {userdata.email}
+                  </p>
                 </div>
                 <hr />
 
                 {/* List of other users */}
-                {users?.slice(0, 3).map((user) => (
+                {users?.slice(1, 4).map((user) => (
                   <li key={user.id} className=" mt-4 list-none ">
-                    <div className="flex justify-center pb-[5px] bg-white ">
+                    <Link
+                      to={`/user/${user.id}`}
+                      className="flex justify-center pb-[5px] bg-white "
+                    >
                       <img
                         src={user.profilepicture}
                         alt={user.username}
@@ -91,7 +90,7 @@ const NavBar = () => {
                       <div className=" text-gray-700 text-center text-sm font-sm">
                         {user.name}
                       </div>
-                    </div>
+                    </Link>
                     <hr />
                   </li>
                 ))}
@@ -113,6 +112,6 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-  )
-}
-export default NavBar
+  );
+};
+export default NavBar;

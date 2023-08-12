@@ -1,36 +1,42 @@
+import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
-import SideNavebar from "../components/SideNavbar";
+import SideNavbar from "../components/SideNavbar";
 import ChatPage from "../components/ChatPage";
 
 const GalleryPage = () => {
-    const profileData = JSON.parse(localStorage.getItem("userData"));
+  const [profileData, setProfileData] = useState(null);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    setProfileData(userData);
+  }, []);
+
+  const renderContent = () => {
+    if (!profileData) {
+      return <Loader />;
+    } else {
+      return (
+        <div className="mt-4 p-8">
+          <div className="text-center font-bold text-gray-400 text-[5rem] opacity-25 mt-[8rem]">
+            Coming Soon
+          </div>
+        </div>
+      );
+    }
+  };
 
   return (
-    <div className="">
-      <div className=" flex ">
-        <div className=" w-[24%]">
-          <SideNavebar />
-        </div>
-        <div className="py-12 px-8 w-[76%]">
-          <NavBar />
-          <hr />
-          
-          {/* If dataArr is falsy (undefined, null, false, 0, ""), display a loading animation, otherwise display the content. */}
-          {!profileData ? (
-            <div>
-             <Loader/>
-            </div>
-          ) : (
-            <div className="mt-4 p-8">
-              <div className="text-center font-bold text-gray-400 text-[5rem] opacity-25 p-40">
-             Coming Soon
-              </div>
-            </div>
-          )}
-        </div>
+    <div className="flex">
+      <div className="w-[24%]">
+        <SideNavbar />
       </div>
-      <ChatPage/>
+      <div className="py-12 px-8 w-[76%]">
+        <NavBar />
+        <hr />
+        {renderContent()}
+      </div>
+      <ChatPage />
     </div>
   );
 };
