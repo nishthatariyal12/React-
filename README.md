@@ -6,7 +6,7 @@ I have successfully completed a frontend web app by harnessing a diverse array o
    <li>Html</li>
    <li> CSS</li>
    <li>JavaScript</li>
-   <li>RectJs</li>
+   <li>ReactJs</li>
    <li>Tailwind Css</li>
    <li>Chakra-Ui</li>
    <li>Parcel-bundler</li>
